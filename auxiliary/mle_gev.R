@@ -5,15 +5,15 @@
 # Packages
 
 library(maxLik)
+library(bgumbel)
 
 llog <- function(theta,x){
+  n <- length(x)
   mu <- theta[1]
   sigma <- theta[2]
   delta <- theta[3]
-  ll <- sum(
-    log(delta + 1) - log(sigma) + delta * log(abs(x)) - (x * abs(x)^delta + mu) / sigma
-    - exp(- (x * abs(x)^delta + mu) / sigma )
-  )
+  ll <- n * log(delta + 1) - n*log(sigma) + delta * sum(log(abs(x))) - sum(x * abs(x)^delta + mu) / sigma -
+      sum(exp(- (x * abs(x)^delta + mu) / sigma ))
   return(ll)
 }
 
@@ -25,11 +25,19 @@ gradlik <- function(theta,x){
   grsigma <- sum( -1/sigma + (x * abs(x)^delta + mu)/sigma^2 - 
                     exp(- (x * abs(x)^delta + mu) / sigma ) * (x * abs(x)^delta + mu)/sigma^2
                   )
-  grdelta <- sum(1/(delta + 1) + log(abs(x)) - x * abs(x)^delta / sigma * log(x * abs(x)^delta / sigma)
-                 + exp(mu/sigma) * exp(-(x * abs(x)^delta)/sigma) * x * abs(x)^delta / sigma * 
-                   log((x * abs(x)^delta) / sigma)
-                   )
+  grdelta <- sum( 1/(delta + 1) + log(abs(x)) - x * abs(x)^delta * log(abs(x))/sigma +
+                   exp(- (x * abs(x)^delta + mu) / sigma) * x * abs(x)^delta * log(abs(x))/sigma
+                 )
   return(c(grmu, grsigma, grdelta))
 }
 
 
+# geração de valores aleatórios
+
+x <- rgev(500, mu = 4, sigma = 1, delta = 0)
+
+# chutes iniciais
+theta0 <- bgumbel::mlebgumbel(data = x, auto = TRUE)
+theta0 <- c(theta0$estimate$estimate[c(1,2)],1)
+
+est <- maxLik(logLik = llog, grad = gradlik, start = theta0, x = x, method = 'BFGS')
