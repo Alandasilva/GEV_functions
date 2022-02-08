@@ -34,10 +34,10 @@ gradlik <- function(theta,x){
 
 # geração de valores aleatórios
 
-x <- rgev(500, mu = 4, sigma = 1, delta = 0)
+x <- rgev(1000, mu = 50, sigma = 10, delta = 1)
 
 # chutes iniciais
 theta0 <- bgumbel::mlebgumbel(data = x, auto = TRUE)
-theta0 <- c(theta0$estimate$estimate[c(1,2)],1)
+theta0 <- abs(theta0$estimate$estimate)
 
 est <- maxLik(logLik = llog, grad = gradlik, start = theta0, x = x, method = 'BFGS')
