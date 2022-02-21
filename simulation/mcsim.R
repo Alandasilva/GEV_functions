@@ -2,8 +2,8 @@
 ### Monte Carlo Simulation
 ########################################################
 
-source('./auxiliary/rgev.R') # random numbers generator
-source('./auxiliary/mlegev.R') # MLE
+source('./auxiliary/rbgum.R') # random numbers generator
+source('./auxiliary/mlebgum.R') # MLE
 
 R = 1000 # Number of MC replications
 cont = 0 # count replications
@@ -24,7 +24,7 @@ while(cont < R){
   
   cont <- cont + 1
   
-  x <- rgev(n = n, mu = mu, sigma = sigma, delta = delta)
+  x <- rbgum(n = n, mu = mu, sigma = sigma, delta = delta)
   
   est <- tryCatch(expr = maxllog(x), error = function(e) 'erro')
   if(est != 'erro'){

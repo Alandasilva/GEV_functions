@@ -2,7 +2,7 @@
 # Quantile Function
 ################################################################################
 
-qgev <- function(p, mu, sigma, delta){
+qbgum <- function(p, mu, sigma, delta){
   
   y <- ifelse(test = p > exp(-exp(-mu/sigma)),
               yes = (- sigma * log(-log(p)) - mu)^(1/(delta + 1)), 
