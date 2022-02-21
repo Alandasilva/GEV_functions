@@ -37,3 +37,18 @@ while(cont < R){
     fail <- fail + 1
   }
 }
+
+# Bias
+mean(MCmu) - mu
+mean(MCsigma) - sigma
+mean(MCdelta) - delta
+
+# MSE
+mean( (MCmu - mu)^2 )
+mean( (MCsigma - sigma)^2 )
+mean( (MCdelta - delta)^2 )
+
+# RMSE
+sqrt( mean( (MCmu - mu)^2 ) )
+sqrt( mean( (MCsigma - sigma)^2 ) )
+sqrt( mean( (MCdelta - delta)^2 ) )
