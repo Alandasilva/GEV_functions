@@ -10,7 +10,3 @@ rgev <- function(n, mu, sigma, delta){
               )
   return(y)
 }
-
-
-x <- rgev(n = 1000, mu = 4, sigma = 1, delta = 2)
-plot(density(x))

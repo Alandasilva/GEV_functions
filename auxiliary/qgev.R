@@ -11,6 +11,3 @@ qgev <- function(p, mu, sigma, delta){
   return(y)
 }
 
-
-x <- qgev(p = c(0.2, 0.975), mu = 4, sigma = 1, delta = 2)
-
