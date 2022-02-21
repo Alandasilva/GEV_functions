@@ -1,5 +1,5 @@
 # GEV_functions
-Esse repositório conta com algumas funções da distribuição Gumbel Bimodal
+Esse repositório conta com algumas funções da distribuição Gumbel Bimodal.
 
  A Pasta **auxialiry** conta com as funções:
  - *qbgum*: quantil;
