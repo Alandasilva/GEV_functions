@@ -1,5 +1,5 @@
 ################################################################################
-### GEV - QDF
+### GEV - Quantile Function
 ################################################################################
 
 qgev <- function(p,xi,mu,sigma,delta){
@@ -13,7 +13,7 @@ qgev <- function(p,xi,mu,sigma,delta){
   # }
   q <- ifelse((mu + ((-log(p))^(-xi) - 1)/xi) > 0,
               ( ( mu/sigma + ((-log(p))^(-xi) - 1)/(sigma*xi) )^(1/(delta + 1)) ),
-              ( - mu/sigma - ( (-log(p))^(-xi) - 1)/(sigma*xi) )^(1/(delta + 1)))
+              -( - mu/sigma - ( (-log(p))^(-xi) - 1)/(sigma*xi) )^(1/(delta + 1)))
   return(q)
 }
 

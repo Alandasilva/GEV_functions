@@ -24,3 +24,4 @@ pgev <- function(x,xi,mu,sigma,delta,log = FALSE){
 
 mu = 0; sigma = 1; delta = 0; xi = 1
 pgev(x = seq(-1,99,1),mu = 0, sigma = 1, delta = 1, xi = 1)
+curve(expr = pgev(x = x,mu = 0, sigma = 1, delta = 0, xi = 1), from = -0.9, to = 20)

@@ -13,11 +13,12 @@ dgev <- function(x,xi,mu,sigma,delta,log = FALSE){
   }
   if(xi < 0){
     f <- sigma*(delta + 1)*(abs(x)^delta)*(tl(x)^(-1/xi - 1))*exp(-tl(x)^(-1/xi)) * ( sign(mu - 1/xi)*(abs(mu - 1/xi)/sigma)^(1/(delta + 1)) > x )
-  } 
-  # else{
-  #   f <- exp( -(t(x) - mu) - exp( -(t(x) - mu) ) )*dt(x)
-  # }
-  if(is.nan(f)){f <- 0}
+  }
+  # f <- ifelse(xi > 0,
+  #             (sigma*(delta + 1)*(abs(x)^delta)*(tl(x))^(-1/xi - 1)*exp(-tl(x)^(-1/xi)) * ( sign(mu - 1/xi)*(abs(mu - 1/xi)/sigma)^(1/(delta + 1)) < x )),
+  #             (sigma*(delta + 1)*(abs(x)^delta)*(tl(x)^(-1/xi - 1))*exp(-tl(x)^(-1/xi)) * ( sign(mu - 1/xi)*(abs(mu - 1/xi)/sigma)^(1/(delta + 1)) > x ))
+  #             )
+  # if(is.nan(f)){f <- 0}
   if(log == TRUE){f <- log(f)}
   return(f)
 }
