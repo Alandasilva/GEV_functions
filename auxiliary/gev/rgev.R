@@ -18,6 +18,5 @@ rgev <- function(n,xi,mu,sigma,delta){
   return(q)
 }
 
-mu = 0; sigma = 1; delta = 1; xi = 1
-rgev(n = 1000, mu = 0, sigma = 1, delta = 0, xi = 1)
+rgev(n = 10000, mu = 1, sigma = 1, delta = 1, xi = 1)
 

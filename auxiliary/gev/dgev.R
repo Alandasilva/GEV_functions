@@ -26,4 +26,4 @@ dgev <- function(x,xi,mu,sigma,delta,log = FALSE){
 mu = 0; sigma = 1; delta = 0; xi = 1
 dgev(x = -1,mu = 0, sigma = 1, delta = 0, xi = 1)
 
-curve(expr = dgev(x = x,mu = 0, sigma = 1, delta = 0, xi = 1), from = -4, to = 10)
+curve(expr = dgev(x = x,mu = 1, sigma = 1, delta = 2, xi = 1), from = -4, to = 40)
